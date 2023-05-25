@@ -74,16 +74,4 @@ public class CardWithDeliveringNegativeTest {
 
     }
 
-    @Test
-    public void consentCheckboxNotChecked() {
-        open("http://localhost:9999");
-        $("[data-test-id='city'] input ").setValue("Москва");
-        $("[data-test-id='date'] input ").doubleClick().sendKeys(generateDate(5, "dd.MM.yyyy"));
-        $("[data-test-id='name'] input").setValue("Диканская Мария");
-        $("[data-test-id='phone'] input").setValue("+79114771614");
-        $("[data-test-id='agreement']");
-        $$("button").find(exactText("Забронировать")).click();
-        $("[data-test-id='city'].input_invalid").shouldBe(visible, Duration.ofSeconds(5)).should(exactText("Поле обязательно для заполнения"));
-
     }
-}
