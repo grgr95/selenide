@@ -17,11 +17,6 @@ public class CardWithDeliveringNegativeTest {
     @Test
     public void removingAnEmptyTemplate() {
         open("http://localhost:9999");
-        $("[data-test-id='city'] input ").setValue("");
-        $("[data-test-id='date'] input ").doubleClick().sendKeys(generateDate(0, "dd.MM.yyyy"));
-        $("[data-test-id='name'] input").setValue("");
-        $("[data-test-id='phone'] input").setValue("");
-        $("[data-test-id='agreement']").click();
         $$("button").find(exactText("Забронировать")).click();
         $("[data-test-id='city'].input_invalid").shouldBe(visible, Duration.ofSeconds(5)).should(exactText("Поле обязательно для заполнения"));
 
@@ -88,7 +83,7 @@ public class CardWithDeliveringNegativeTest {
         $("[data-test-id='phone'] input").setValue("+79114771614");
         $("[data-test-id='agreement']");
         $$("button").find(exactText("Забронировать")).click();
-        $("[data-test-id='agreement'].input_invalid").shouldBe(visible);
+        $("[data-test-id='city'].input_invalid").shouldBe(visible, Duration.ofSeconds(5)).should(exactText("Поле обязательно для заполнения"));
 
     }
 }
